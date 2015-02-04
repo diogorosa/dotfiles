@@ -1,0 +1,71 @@
+[user]
+	name = "Diogo Rosa" 
+	email = "diogo.m.c.rosa@gmail.com"
+
+[core]
+	excludesfile = /Users/diogorosa/.gitignore_global
+[color]
+  ui = auto
+[alias]
+  st = status -s
+  ci = commit -s
+  co = checkout
+  br = branch
+  df = diff
+  dfp = diff -p
+  dfs = diff --stat
+  dfps = diff -p --stat
+  ft = fetch -v
+  sub = reset HEAD --
+  fta = fetch --all -v
+  loco = log --first-parent --no-merges
+  l = log --graph --decorate --oneline --all
+  lp = log --graph --decorate -p
+  lop = log --graph --decorate --oneline -p
+  ls = log --graph --decorate --oneline --all --stat
+  lsp = log --graph --decorate --all --stat -p
+  lo = log --graph --decorate --oneline
+  ld = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %C(yellow)%an, %C(cyan)%ar%Creset'
+	stash-unapply = !git stash show -p | git apply -R
+
+[push]
+  default = current
+
+[diff]
+  tool = diffmerge
+
+[difftool "diffmerge"]
+  cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+
+[merge]
+	tool = diffmerge
+
+[mergetool "diffmerge"]
+  cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+  trustExitCode = true
+
+[imap]
+  folder = "[Gmail]/Drafts"
+  host = imap://imap.gmail.com
+  user =
+  pass =
+  port = 993
+  sslverify = false
+
+[sendemail]
+  smtpencryption = tls
+  smtpserver = smtp.gmail.com
+  smtpuser =
+	smtppass =
+  smtpserverport = 587
+  chainreplyto = false
+[format]
+	signoff = true
+[credential]
+	helper = osxkeychain
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
